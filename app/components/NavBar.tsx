@@ -1,4 +1,3 @@
-// app/components/NavBar.tsx
 "use client";
 
 import Link from "next/link";
@@ -18,26 +17,36 @@ export default function NavBar() {
   }
 
   return (
-    <header className="border-b bg-white shadow-sm">
-      <nav className="mx-auto max-w-4xl flex items-center justify-between p-4">
-        <Link href="/" className="font-bold text-lg text-blue-600">Spark</Link>
+    <header className="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-neutral-950/70 border-b border-neutral-800">
+      <nav className="mx-auto max-w-3xl flex items-center justify-between p-3">
+        <Link href="/" className="font-bold text-lg">
+          <span className="bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent">
+            Spark
+          </span>
+        </Link>
 
-        <div className="flex gap-3 items-center">
-          {/* Everyone sees the feed */}
-          <Link href="/posts" className="hover:underline">Posts</Link>
-
+        <div className="flex items-center gap-2">
+          <Link href="/posts" className="hidden sm:inline hover:underline">
+            Posts
+          </Link>
           {user ? (
-  <>
-    <Link href="/posts/new">
-      <Button>New Post</Button>
-    </Link>
-    <Link href="/profile" className="hover:underline">Profile</Link>
-    <Button onClick={handleSignOut}>Sign out</Button>
-  </>
-) : (
             <>
-              <Link href="/login" className="hover:underline">Log in</Link>
-              <Link href="/signup" className="hover:underline">Sign up</Link>
+              <Link href="/posts/new">
+                <Button>New Post</Button>
+              </Link>
+              <Link href="/profile" className="hover:underline">
+                Profile
+              </Link>
+              <Button onClick={handleSignOut}>Sign out</Button>
+            </>
+          ) : (
+            <>
+              <Link href="/login" className="hover:underline">
+                Log in
+              </Link>
+              <Link href="/signup" className="hover:underline">
+                Sign up
+              </Link>
             </>
           )}
         </div>

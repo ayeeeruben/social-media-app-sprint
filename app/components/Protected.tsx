@@ -9,13 +9,10 @@ export default function Protected({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
   useEffect(() => {
-    if (!loading && !user) {
-      router.replace("/login");
-    }
+    if (!loading && !user) router.replace("/login");
   }, [loading, user, router]);
 
-  if (loading) return <main className="p-6">Loading…</main>;
-  if (!user) return null; // prevents flicker before redirect
-
+  if (loading) return <p className="text-sm text-gray-500">Loading…</p>;
+  if (!user) return null; // redirecting
   return <>{children}</>;
 }
